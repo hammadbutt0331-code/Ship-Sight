@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ── GloomBloomBeauty design tokens ───────────────────────── */
+@theme {
+  --color-porcelain: #faf6f1;
+  --color-oat: #efe6dc;
+  --color-petal: #e9cfcb;
+  --color-blush: #f4e6e2;
+  --color-rose: #a4626a;
+  --color-rose-deep: #8a4d55;
+  --color-plum: #3a2a33;
+  --color-plum-soft: #5c4852;
+  --color-sage: #8a9a86;
+  --color-line: #e2d6ca;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  --radius-arch: 999px 999px 1.5rem 1.5rem;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: var(--color-porcelain);
+    color: var(--color-plum);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-petal);
+    color: var(--color-plum);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-rose);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Keep anchored sections clear of the sticky header */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-rose-deep);
+  }
+}
+
+/* Custom utilities (support responsive prefixes, e.g. sm:container-page) */
+@utility container-page {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility section {
+  padding-block: 4.5rem;
+  @media (min-width: 1024px) {
+    padding-block: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
